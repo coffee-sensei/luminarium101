@@ -6,3 +6,4 @@ Surfing through luminarium - the pwn.college course
 2. Pondering Paths
 3. Comprehending Commands
 4. Digesting Documentation
+5. File Globbing
