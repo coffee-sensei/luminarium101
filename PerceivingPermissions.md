@@ -61,3 +61,42 @@ a-rwx removes all permissions for the user, group, and world
 ## 5. Executable files
 ### Question statement:
 In this challenge, the /challenge/run program will give you the flag, but you must first make it executable! Remember your chmod, and get /challenge/run to tell you the flag!
+
+### Solution:
+![Screenshot from 2025-06-02 10-11-05](https://github.com/user-attachments/assets/392d8996-8320-4e41-a285-b978f3080b85)
+1. We look up the permissions available to ```/challenge/run```.
+2. We give it the required permissions.
+3. We run the above code, giving us the flag.
+
+## 6. Permission tweaking practice
+### Question statement:
+This challenge will ask you to change the permissions of the /challenge/pwn file in specific ways a few times in a row. If you get the permissions wrong, the game will reset and you can try again. If you get the permissions right eight times in a row, the challenge will let you chmod /flag to make it readable for yourself :-) Launch /challenge/run to get started!
+
+### Solution:
+![Screenshot from 2025-06-02 11-57-31](https://github.com/user-attachments/assets/29f97c71-2303-4609-81c8-fbaa5e5ad498)
+![Screenshot from 2025-06-02 12-07-11](https://github.com/user-attachments/assets/9d78b285-5c29-43c0-b47e-ef34c4e2cbeb)
+![Screenshot from 2025-06-02 12-07-48](https://github.com/user-attachments/assets/0977bb51-bb8d-4d83-a539-f3169c8f1dfe)
+![Screenshot from 2025-06-02 12-08-07](https://github.com/user-attachments/assets/6bd7b821-90de-4da8-951e-f128ec0c19d7)
+
+
+## 7. Permissions setting practice
+### Question statement:
+This level extends the previous level by requesting more radical permission changes, which you will need = and ,-chaining to achieve. Good luck!
+
+### Solution:
+![Screenshot from 2025-06-04 00-44-00](https://github.com/user-attachments/assets/5c1f0476-03cb-4264-aab3-c8f10b4db3b9)
+![Screenshot from 2025-06-04 00-44-24](https://github.com/user-attachments/assets/0a410c2f-828f-4197-bd5f-5c1a45c48c88)
+It is the same as the previous level but here we give permissions to group, user and others as u=,g=, and o=.
+
+## 8. The SUID bit
+### Question statement:
+Now, we are going to let you add the SUID bit to the /challenge/getroot program in order to spawn a root shell for you to cat the flag yourself!
+
+### Solution:
+![Screenshot from 2025-06-04 00-50-54](https://github.com/user-attachments/assets/32137998-26aa-4642-ae8f-fe5d94c09361)
+1. I first tried running `/challenge/pwn` but it didn’t exist, so I ran `/challenge/run` and learned about the SUID bit.
+2. I checked `/usr/bin/sudo` with `ls -l` and confirmed it had the SUID bit set.
+3. I viewed the `/challenge/getroot` script, which spawns a root shell.
+4. I set the SUID bit on `/challenge/getroot` using `chmod u+s`.
+5. I ran the script and successfully got a root shell.
+6. Initially, `cat /flag` failed due to permission denial, but once in the root shell, I ran it again and retrieved the flag.
